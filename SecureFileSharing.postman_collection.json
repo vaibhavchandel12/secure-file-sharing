@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "Secure File Sharing API",
+    "description": "Postman Collection for FastAPI Secure File Sharing System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Vaibhav",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "test@example.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "test1234",
+              "type": "text"
+            },
+            {
+              "key": "role",
+              "value": "ops",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/signup",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "signup"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sign In",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"test1234\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/signin",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "signin"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Upload File (Ops only)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/upload",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "upload"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Files (Client only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/list-files",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "list-files"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Download Link (Client only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/download-file/filename.docx",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "download-file",
+            "filename.docx"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Secure Download (Client only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/secure-download/encrypted_name",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "secure-download",
+            "encrypted_name"
+          ]
+        }
+      }
+    }
+  ]
+}
